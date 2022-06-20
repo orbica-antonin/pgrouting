@@ -88,6 +88,7 @@ pgr_dijkstra(
         int64_t source,
         int64_t target,
         bool only_cost = true) {
+    only_cost = true;
     Pgr_dijkstra< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, source, target, only_cost);
 }
@@ -173,6 +174,7 @@ class Pgr_dijkstra {
              int64_t start_vertex,
              int64_t end_vertex,
              bool only_cost = true) {
+         only_cost = true;
          clear();
 
          // adjust predecessors and distances vectors
@@ -199,7 +201,7 @@ class Pgr_dijkstra {
                  graph,
                  v_source, v_target,
                  predecessors, distances,
-                 only_cost, true);
+                 true, true);
      }
 
 
@@ -216,7 +218,7 @@ class Pgr_dijkstra {
              size_t n_goals) {
          // adjust predecessors and distances vectors
          clear();
-
+         only_cost = true;
          predecessors.resize(graph.num_vertices());
          distances.resize(
                  graph.num_vertices(),
@@ -251,7 +253,7 @@ class Pgr_dijkstra {
              int64_t end_vertex,
              bool only_cost) {
          std::deque<Path> paths;
-
+         only_cost = true;
          for (const auto &start : start_vertex) {
              paths.push_back(
                      dijkstra(graph, start, end_vertex, only_cost));
@@ -274,7 +276,7 @@ class Pgr_dijkstra {
              size_t n_goals = (std::numeric_limits<size_t>::max)()) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
-
+            only_cost = true;
          for (const auto &start : start_vertex) {
              auto r_paths = dijkstra(
                      graph,
@@ -294,7 +296,7 @@ class Pgr_dijkstra {
             size_t n_goals) {
         // a call to 1 to many is faster for each of the sources
         std::deque<Path> paths;
-
+        only_cost = true;
         // group targets per distinct source
         std::map<int64_t , std::vector<int64_t> > vertex_map;
         for (const II_t_rt &comb : combinations) {
@@ -721,6 +723,7 @@ class Pgr_dijkstra {
              V source,
              std::vector< V > &targets,
              bool only_cost) const {
+        only_cost = true;
          std::deque<Path> paths;
          for (const auto target : targets) {
              paths.push_back(Path(
