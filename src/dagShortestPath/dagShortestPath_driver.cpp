@@ -49,7 +49,7 @@ pgr_dagShortestPath(
         std::vector <II_t_rt> &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
-        bool only_cost = false) {
+        bool only_cost = true) {
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),

@@ -65,7 +65,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              G &graph,
              int64_t start_vertex,
              int64_t end_vertex,
-             bool only_cost = false) {
+             bool only_cost = true) {
          clear();
          log << std::string(__FUNCTION__) << "\n";
 
@@ -100,7 +100,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              G &graph,
              int64_t start_vertex,
              const std::vector< int64_t > &end_vertex,
-             bool only_cost = false) {
+             bool only_cost = true) {
          // adjust predecessors and distances vectors
          clear();
          log << std::string(__FUNCTION__) << "\n";
@@ -140,7 +140,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              G &graph,
              const std::vector < int64_t > &start_vertex,
              int64_t end_vertex,
-             bool only_cost = false) {
+             bool only_cost = true) {
          std::deque<Path> paths;
          log << std::string(__FUNCTION__) << "\n";
          for (const auto &start : start_vertex) {
@@ -161,7 +161,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              G &graph,
              const std::vector< int64_t > &start_vertex,
              const std::vector< int64_t > &end_vertex,
-             bool only_cost = false) {
+             bool only_cost = true) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
          log << std::string(__FUNCTION__) << "\n";
@@ -187,7 +187,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      std::deque<Path> bellman_ford(
              G &graph,
              const std::vector<II_t_rt> &combinations,
-             bool only_cost = false) {
+             bool only_cost = true) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
          log << std::string(__FUNCTION__) << "\n";
