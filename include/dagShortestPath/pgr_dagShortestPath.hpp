@@ -59,7 +59,7 @@ class Pgr_dag {
              G &graph,
              int64_t start_vertex,
              int64_t end_vertex,
-             bool only_cost = false) {
+             bool only_cost = true) {
          clear();
 
          // adjust predecessors and distances vectors

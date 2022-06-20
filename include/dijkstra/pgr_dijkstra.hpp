@@ -87,7 +87,7 @@ pgr_dijkstra(
         G &graph,
         int64_t source,
         int64_t target,
-        bool only_cost = false) {
+        bool only_cost = true) {
     Pgr_dijkstra< G > fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, source, target, only_cost);
 }
@@ -172,7 +172,7 @@ class Pgr_dijkstra {
              G &graph,
              int64_t start_vertex,
              int64_t end_vertex,
-             bool only_cost = false) {
+             bool only_cost = true) {
          clear();
 
          // adjust predecessors and distances vectors
